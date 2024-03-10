@@ -9,13 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-            Text("Hello, world!")
+        List {
+            ListItem()
         }
-        .padding()
-        .foregroundColor(.accentColor)
+        .listStyle(.grouped)
     }
 }
 
@@ -25,5 +22,17 @@ struct ContentView_Previews: PreviewProvider {
             .preferredColorScheme(.light)
         ContentView()
             .preferredColorScheme(.dark)
+    }
+}
+
+struct ListItem: View {
+    var body: some View {
+        HStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+            Text("Counter")
+        }
+        .padding()
+        .foregroundColor(.accentColor)
     }
 }
