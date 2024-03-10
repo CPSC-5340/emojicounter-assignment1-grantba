@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    var emojiArray = ["🤣", "😜", "😀", "🤩", "😂"]
+    
     var body: some View {
         NavigationView {
             List {
                 Group {
-                    ListItem(icon: "globe", title: "Counter")
+                    ForEach(emojiArray, id: \.self) {
+                        emoji in ListItem(icon: emoji)
                 }
             }
             .navigationTitle("Emoji Counter")
@@ -32,13 +35,11 @@ struct ContentView_Previews: PreviewProvider {
 
 struct ListItem: View {
     var icon: String
-    var title: String
     
     var body: some View {
         HStack {
-            Image(systemName: icon)
-                .imageScale(.large)
-            Text("\(title): ")
+            Text(icon)
+            Text("Counter: ")
             ActionItem()
         }
         .padding()
@@ -59,7 +60,7 @@ struct ActionItem: View {
                 .clipShape(RoundedRectangle(cornerRadius: 60))
                 .overlay {
                     RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 2)
+                        .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 1)
                 }
                 .onTapGesture {
                     emojiCounter += 1
@@ -70,11 +71,12 @@ struct ActionItem: View {
                 .clipShape(RoundedRectangle(cornerRadius: 60))
                 .overlay {
                     RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 2)
+                        .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 1)
                 }
                 .onTapGesture {
                     emojiCounter -= 1
                 }
+            }
         }
     }
 }
