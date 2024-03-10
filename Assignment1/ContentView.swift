@@ -12,7 +12,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 Group {
-                    ListItem()
+                    ListItem(icon: "globe", title: "Counter")
                 }
             }
             .navigationTitle("Emoji Counter")
@@ -31,13 +31,25 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct ListItem: View {
+    var icon: String
+    var title: String
+    
     var body: some View {
         HStack {
-            Image(systemName: "globe")
+            Image(systemName: icon)
                 .imageScale(.large)
-            Text("Counter")
+            Text(title)
+            Spacer()
+            ActionItem()
         }
         .padding()
         .foregroundColor(.accentColor)
+    }
+}
+
+struct ActionItem: View {
+    var body: some View {
+        Button("+", action: { print("Plus") })
+        Button("-", action: { print("Minus") })
     }
 }
