@@ -38,8 +38,7 @@ struct ListItem: View {
         HStack {
             Image(systemName: icon)
                 .imageScale(.large)
-            Text(title)
-            Spacer()
+            Text("\(title): ")
             ActionItem()
         }
         .padding()
@@ -48,8 +47,34 @@ struct ListItem: View {
 }
 
 struct ActionItem: View {
+    @State var emojiCounter: Int = 0
+    
     var body: some View {
-        Button("+", action: { print("Plus") })
-        Button("-", action: { print("Minus") })
+        HStack {
+            Text(String(emojiCounter))
+            Spacer()
+            Image(systemName: "plus")
+                .imageScale(.large)
+                .padding(5)
+                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 2)
+                }
+                .onTapGesture {
+                    emojiCounter += 1
+                }
+            Image(systemName: "minus")
+                .imageScale(.large)
+                .padding(12)
+                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 2)
+                }
+                .onTapGesture {
+                    emojiCounter -= 1
+                }
+        }
     }
 }
