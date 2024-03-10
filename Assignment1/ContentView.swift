@@ -9,10 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        List {
-            ListItem()
+        NavigationView {
+            List {
+                Group {
+                    ListItem()
+                }
+            }
+            .navigationTitle("Emoji Counter")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .listStyle(.grouped)
     }
 }
 
