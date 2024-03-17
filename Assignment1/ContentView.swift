@@ -54,28 +54,30 @@ struct ActionItem: View {
         HStack {
             Text(String(emojiCounter))
             Spacer()
-            Image(systemName: "plus")
-                .imageScale(.large)
-                .padding(5)
-                .clipShape(RoundedRectangle(cornerRadius: 60))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 1)
-                }
-                .onTapGesture {
-                    emojiCounter += 1
-                }
-            Image(systemName: "minus")
-                .imageScale(.large)
-                .padding(12)
-                .clipShape(RoundedRectangle(cornerRadius: 60))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 1)
-                }
-                .onTapGesture {
-                    emojiCounter -= 1
-                }
+            Button(action: {
+                emojiCounter += 1
+            }) {
+                Image(systemName: "plus")
+                    .imageScale(.large)
+                    .padding(4)
+                    .clipShape(RoundedRectangle(cornerRadius: 60))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 1)
+                    }
+            }.buttonStyle(BorderlessButtonStyle())
+            Button(action: {
+                emojiCounter -= 1
+            }) {
+                Image(systemName: "minus")
+                    .imageScale(.large)
+                    .padding(10)
+                    .clipShape(RoundedRectangle(cornerRadius: 60))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color(red: 0.906285584, green: 0.001993658254, blue: 0.01113559771), lineWidth: 1)
+                    }
+                }.buttonStyle(BorderlessButtonStyle())
             }
         }
     }
